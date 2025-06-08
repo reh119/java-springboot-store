@@ -8,8 +8,13 @@ public class StoreApplication {
 
     public static void main(String[] args) {
        // SpringApplication.run(StoreApplication.class, args);
-        var orderService = new OrderService(new PayPalPaymentService()); // here is where we are injecting the type of payment service we want to use right now. we can pass in new payment services late
+
+        var orderService = new OrderService(); // here is where we are injecting the type of payment service we want to use right now. we can pass in new payment services late
+        orderService.setPaymentService(new PayPalPaymentService());
         orderService.placeOrder();
+
+
+
     }
 
 }
